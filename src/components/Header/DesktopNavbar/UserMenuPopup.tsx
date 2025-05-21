@@ -122,7 +122,7 @@ const styles = `
   .avatar-circle {
     width: 30px;
     height: 30px;
-    background-color: #007bff;
+    background-color: var(--site-primary-light);
     color: white;
     border-radius: 50%;
     display: flex;

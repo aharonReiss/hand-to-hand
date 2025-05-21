@@ -1,16 +1,15 @@
 :root {
   /* צבעים שולטים באתר - סגול */
-  --site-primary: #6f42c1;
-  --site-primary-light: #9b6dff;
+  --site-primary: #192d45;
+  --site-primary-light: #26466d;
   --site-primary-lighter: #d1c4e9;
-  --site-primary-dark: #5a32a3;
+  --site-primary-dark: #113158;
   --site-primary-darker: #4527a0;
   --site-primary-gradient: linear-gradient(
     135deg,
     var(--site-primary) 0%,
     var(--site-primary-dark) 100%
   );
-
   /* צבעים */
   --primary-color: #28a745;
   --primary-hover: #218838;

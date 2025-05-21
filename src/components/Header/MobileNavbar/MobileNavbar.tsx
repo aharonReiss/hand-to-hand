@@ -33,7 +33,11 @@ const { handleStartAdPosting } = useHeaderHooks();
 
         {/* לוגו במרכז */}
         <Navbar.Brand href="#" className="mx-auto">
-          לוגו
+        <img
+            src="/images/logo3.png"
+            alt="Hand to Hand Logo"
+            style={{ height: "38px", width: "auto" }}
+          />
         </Navbar.Brand>
 
         {/* כפתור פרסום בצד שמאל */}

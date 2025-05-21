@@ -29,7 +29,7 @@ body {
 
 /* Custom Variables */
 :root {
-  --site-primary: #6c5ce7;
-  --site-primary-light: #7e72e8;
-  --site-primary-dark: #5a4ae0;
+  --site-primary: #192d45;
+  --site-primary-light: #26466d;
+  --site-primary-dark: #113158;
 }

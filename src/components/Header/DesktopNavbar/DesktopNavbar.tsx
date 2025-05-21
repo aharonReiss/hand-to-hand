@@ -52,7 +52,11 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = observer(({ }) => {
     >
       <div className="container-fluid px-4">
         <Navbar.Brand as={Link} to="/" className="brand-logo">
-          לוגו
+          <img
+            src="/images/logo3.png"
+            alt="Hand to Hand Logo"
+            style={{ height: "50px", width: "auto" }}
+          />
         </Navbar.Brand>
         <Nav className="mx-auto category-nav">
           {categoriesStore.categories?.map((category: Category) => (
@@ -84,13 +88,6 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = observer(({ }) => {
           ))}
         </Nav>
         <div className="align-items-center d-flex m-0 me-1">
-          <Button
-            variant="primary"
-            className="me-2"
-            onClick={() => setShowAuthModal(true)}
-          >
-            התחברות / הרשמה
-          </Button>
           <AuthModal
             show={showAuthModal}
             onHide={() => setShowAuthModal(false)}
@@ -99,18 +96,27 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = observer(({ }) => {
           />
           <Button
             variant="outline-primary"
-            className="btn-success p-2"
+            className="btn-success"
             onClick={handleStartAdPosting}
           >
             + פרסום מודעה
           </Button>
           <div className="me-2">
-            <UserMenuPopup
+          {userStore.isLoggedIn &&<UserMenuPopup
               onProfile={handleProfileClick}
               onLogout={handleLogout}
               onLogin={handleLogin}
               onRegister={handleRegister}
-            />
+            />}
+            {!userStore.isLoggedIn && (
+              <Button
+              variant="primary"
+              className="me-2"
+              onClick={() => setShowAuthModal(true)}
+            >
+              התחברות / הרשמה
+            </Button>
+            )}
           </div>
         </div>
       </div>

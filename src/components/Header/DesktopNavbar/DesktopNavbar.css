@@ -98,14 +98,14 @@
 }
 
 /* עיצוב הכפתור הבסיסי */
-.btn-success {
+.btn-success, .btn-primary {
   position: relative;
   overflow: hidden;
   font-size: 16px;
   padding: 10px 20px;
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
-  background: var(--site-primary);
+  background: var(--site-primary-light);
   border: none;
   color: #fff;
   font-weight: bold;
@@ -113,8 +113,7 @@
   z-index: 1; /* נוסיף Z-index כדי שהכפתור יישאר מעל כל דבר */
 }
 
-/* רקע דינמי עם מעבר צבע */
-.btn-success::before {
+.btn-success::before, .btn-primary::before {
   content: "";
   position: absolute;
   top: 0;
@@ -130,13 +129,11 @@
   z-index: -1; /* נוודא שלרקע יש Z-index נמוך יותר מהכפתור */
 }
 
-/* מעבר עכבר - הרקע מחליף צבעים */
-.btn-success:hover::before {
+.btn-success:hover::before, .btn-primary:hover::before {
   left: 0;
 }
 
-/* אפקט לחיצה */
-.btn-success:active {
+.btn-success:active, .btn-primary:active {
   transform: scale(0.95);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -144,9 +141,56 @@
 /**/
 /* הוספת גבול תחתון עם צל לאזור הניווט */
 .header-navbar {
-  border-bottom: 3px solid var(--site-primary-light); /* צבע כחול יפה */
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1) !important; /* צל רך */
-  padding: 10px 0; /* קצת ריווח */
+  background: var(--site-primary) !important;
+  border-bottom: none;
+  box-shadow: none !important;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo img {
+  height: 40px;
+  width: auto;
+  margin-left: 24px;
+}
+
+.category-nav {
+  display: flex;
+  align-items: center;
+}
+
+.category-nav .nav-link,
+.category-nav .dropdown-toggle {
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  font-size: 1rem;
+  background: none !important;
+  border: none !important;
+  padding: 0 12px !important;
+  transition: color 0.2s;
+}
+
+.category-nav .nav-link:hover,
+.category-nav .dropdown-toggle:hover,
+.category-nav .nav-link.active,
+.category-nav .dropdown-toggle.active {
+  color: #e0b96a !important;
+}
+
+.align-items-center.d-flex.m-0.me-1 {
+  margin-left: 0;
+}
+
+@media (max-width: 1200px) {
+  .category-nav {
+    gap: 18px;
+  }
+  .brand-logo img {
+    margin-left: 12px;
+  }
 }
 
 /* עיגול ממורכז לתמונה או לאיקון */
@@ -244,4 +288,38 @@
   font-size: 1.1rem;
   color: var(--site-primary);
   transition: color 0.2s;
+}
+
+.navbar-toggler {
+  border-color: #fff !important;
+  box-shadow: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.navbar-toggler-icon {
+  background-image: none !important;
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  margin: 5px 0;
+}
+
+.navbar-toggler-icon span {
+  margin: 0;
 }
