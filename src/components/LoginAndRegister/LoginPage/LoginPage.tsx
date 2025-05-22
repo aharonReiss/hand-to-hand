@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import PageTitle from "../GlobalComponent/PageTitle";
 import { TextField, PasswordField } from "../../Fields/FormFields";
 import { LoginRequest } from "types/LoginAndRegister/Login/LoginRequest";
@@ -86,6 +86,21 @@ const LoginPage: React.FC = () => {
                   התחבר
                 </Button>
               </form>
+              <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                <Link
+                  to="/register"
+                  style={{
+                    color: 'var(--site-primary)',
+                    fontWeight: 600,
+                    fontSize: '1.08rem',
+                    textDecoration: 'underline',
+                    letterSpacing: '0.03em',
+                    transition: 'color 0.2s',
+                  }}
+                >
+                  להרשמה
+                </Link>
+              </div>
             </Card.Body>
           </Card>
         </div>

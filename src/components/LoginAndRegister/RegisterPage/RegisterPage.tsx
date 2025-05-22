@@ -5,6 +5,7 @@ import { TextField, PasswordField, PhoneField } from "../../Fields/FormFields";
 import { UserService } from "services/userService";
 import { RegisterRequest } from "types/LoginAndRegister/Registration/RegisterRequest";
 import { usePopup } from "components/Common/Popup/PopupContext";
+import { useNavigate, Link } from "react-router-dom";
 
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState<RegisterRequest>({
@@ -16,6 +17,7 @@ const RegisterPage: React.FC = () => {
     ConfirmPassword: "",
   });
   const showPopup = usePopup();
+  const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const userService = new UserService();
@@ -24,6 +26,7 @@ const RegisterPage: React.FC = () => {
       showPopup({
         type: 'success',
         message: 'ההרשמה בוצעה בהצלחה',
+        actionHandler: () => navigate("/"),
       });
     } else {
       showPopup({
@@ -124,6 +127,21 @@ const RegisterPage: React.FC = () => {
                 הרשמה
               </Button>
             </form>
+            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <Link
+                to="/login"
+                style={{
+                  color: 'var(--site-primary)',
+                  fontWeight: 600,
+                  fontSize: '1.08rem',
+                  textDecoration: 'underline',
+                  letterSpacing: '0.03em',
+                  transition: 'color 0.2s',
+                }}
+              >
+                להתחברות
+              </Link>
+            </div>
           </Card.Body>
         </Card>
       </div>

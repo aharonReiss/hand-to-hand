@@ -5,8 +5,11 @@ import RoutesComponent from "./components/Routes/RoutesComponent";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { PopupProvider } from "./components/Common/Popup/PopupContext";
+import { observer } from "mobx-react-lite";
+import { userStore } from "stores/User.store";
+import BottomNavBar from "./components/BottomNavBar/BottomNavBar";
 
-const App: React.FC = () => {
+const App: React.FC = observer(() => {
   return (
     <PopupProvider>
       <div style={{ direction: "rtl" }}>
@@ -17,12 +20,13 @@ const App: React.FC = () => {
               <RoutesComponent />
             </div>
             <Footer />
+            {userStore.isLoggedIn && <BottomNavBar />}
           </div>
         </BrowserRouter>
       </div>
     </PopupProvider>
   );
-};
+});
 
 export default App;
 

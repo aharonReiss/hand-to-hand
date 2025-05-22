@@ -149,6 +149,7 @@ const AdPostingForm: React.FC = observer(() => {
         showPopup({
           type: 'success',
           message: 'המודעה נשלחה בהצלחה',
+          actionHandler: () => navigate("/"),
         });
       } else {
         showPopup({

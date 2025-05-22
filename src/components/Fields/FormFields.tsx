@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Form, InputGroup, ListGroup } from "react-bootstrap";
+import { Form, InputGroup, ListGroup, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import FeatureCheckbox from "./SystemFields/FeatureCheckbox";
 // Custom styles
@@ -541,6 +541,21 @@ export const ListGroupField: React.FC<ListGroupFieldProps> = ({
   );
 };
 
+const EyeIcon = ({ open }: { open: boolean }) => (
+  open ? (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{display:'block'}} xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="2" stroke="#222" strokeWidth="2"/>
+      <path d="M1 12C3.5 7 8 4 12 4C16 4 20.5 7 23 12C20.5 17 16 20 12 20C8 20 3.5 17 1 12Z" stroke="#222" strokeWidth="2"/>
+    </svg>
+  ) : (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{display:'block'}} xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="2" stroke="#222" strokeWidth="2"/>
+      <path d="M1 12C3.5 7 8 4 12 4C16 4 20.5 7 23 12C20.5 17 16 20 12 20C8 20 3.5 17 1 12Z" stroke="#222" strokeWidth="2"/>
+      <line x1="4" y1="20" x2="20" y2="4" stroke="#222" strokeWidth="2"/>
+    </svg>
+  )
+);
+
 // Password Input Field
 export const PasswordField: React.FC<BaseFieldProps> = ({
   label,
@@ -553,24 +568,49 @@ export const PasswordField: React.FC<BaseFieldProps> = ({
   disabled,
 }) => {
   const { t } = useTranslation();
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <Form.Group className="mb-3">
+    <Form.Group className="mb-3 position-relative">
       <Form.Label>
         {t(label)}
         {required && <span className="text-danger">*</span>}
       </Form.Label>
-      <Form.Control
-        type="password"
-        name={name}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder ? t(placeholder) : ""}
-        isInvalid={!!error}
-        disabled={disabled}
-        style={!error ? fieldStyles : undefined}
-        className="custom-form-control"
-      />
+      <div style={{ position: 'relative' }}>
+        <Form.Control
+          type={showPassword ? "text" : "password"}
+          name={name}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder ? t(placeholder) : ""}
+          isInvalid={!!error}
+          disabled={disabled}
+          style={{
+            ...(!error ? fieldStyles : {}),
+            paddingLeft: '40px',
+            direction: 'rtl',
+          }}
+          className="custom-form-control"
+        />
+        <span
+          onClick={() => setShowPassword((prev) => !prev)}
+          style={{
+            position: 'absolute',
+            left: '10px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            cursor: 'pointer',
+            zIndex: 2,
+            width: '24px',
+            height: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <EyeIcon open={showPassword} />
+        </span>
+      </div>
       {error && (
         <Form.Control.Feedback type="invalid">{t(error)}</Form.Control.Feedback>
       )}

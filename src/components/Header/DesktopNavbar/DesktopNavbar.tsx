@@ -53,7 +53,7 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = observer(({ }) => {
       <div className="container-fluid px-4">
         <Navbar.Brand as={Link} to="/" className="brand-logo">
           <img
-            src="/images/logo3.png"
+            src="/images/logo6.png"
             alt="Hand to Hand Logo"
             style={{ height: "50px", width: "auto" }}
           />

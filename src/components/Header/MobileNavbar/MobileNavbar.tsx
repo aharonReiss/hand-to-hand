@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"; // ייבוא ה-hook של הנ�
 import { useHeaderHooks } from "../Hooks/useHeaderHooks";
 import { userStore } from "stores/User.store";
 import { observer } from "mobx-react-lite";
+import "./MobileNavbar.css";
 
 interface MobileNavbarProps {
   toggleMobileMenu: () => void;
@@ -29,12 +30,13 @@ const { handleStartAdPosting } = useHeaderHooks();
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           onClick={toggleMobileMenu}
+          children={<span className="navbar-toggler-icon"><span></span></span>}
         />
 
         {/* לוגו במרכז */}
         <Navbar.Brand href="#" className="mx-auto">
         <img
-            src="/images/logo3.png"
+            src="/images/logo6.png"
             alt="Hand to Hand Logo"
             style={{ height: "38px", width: "auto" }}
           />
