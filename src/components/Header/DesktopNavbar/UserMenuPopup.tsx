@@ -7,9 +7,11 @@ import {
   faUserCircle,
   faSignInAlt,
   faUserPlus,
+  faFileAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { userStore } from "stores/User.store";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
 
 interface UserMenuPopupProps {
   onProfile: () => void;
@@ -24,6 +26,8 @@ const UserMenuPopup: React.FC<UserMenuPopupProps> = observer(({
   onLogin,
   onRegister,
 }) => {
+  
+  const navigate = useNavigate();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -83,6 +87,16 @@ const UserMenuPopup: React.FC<UserMenuPopupProps> = observer(({
                 <FontAwesomeIcon icon={faSignOutAlt} className="menu-icon" />
                 התנתק
               </Button>
+            {userStore.user?.isAdmin && <Button
+                variant="link"
+                className="menu-item"
+                onClick={() => {
+                  navigate("/business-post");
+                }}
+              >
+                <FontAwesomeIcon icon={faFileAlt} className="menu-icon" />
+                פרסום עסקים
+              </Button>}
             </>
           ) : (
             <>
