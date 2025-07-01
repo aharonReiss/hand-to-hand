@@ -144,6 +144,7 @@ const AdPostingForm: React.FC = observer(() => {
   const handleSubmit = async () => {
     if (validateStep()) {
       const propertyService = new PropertyService();
+      propertyStore.propertyToAdd.categoryType = categoriesStore.categoryNumberSelected;
       const reponse = await propertyService.addProperty(propertyStore.propertyToAdd);
       if (reponse) {
         showPopup({

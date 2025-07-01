@@ -15,6 +15,7 @@ import HomeFeatures from "../HomeFeatures/HomeFeatures";
 import ValuationForm from "../ValuationForm/ValuationForm";
 import AdPostingForm from "components/PostingProperty/Steps/AdPostingForm";
 import Profile from "../Profile/Profile";
+import BusinessPosting from "../BusinessPosting/BusinessPosting";
 
 const RoutesComponent: React.FC = () => {
   return (
@@ -30,7 +31,7 @@ const RoutesComponent: React.FC = () => {
       <Route path="/shabbat/:location" element={<ShabbatHouses />} />
       <Route path="/home-address" element={<HomeAddress />} />
       <Route path="/home-features" element={<HomeFeatures />} />
-      <Route path="/valuation" element={<ValuationForm />} />
+      <Route path="/valuation" element={<ValuationForm />} />      
 
       {/* Protected Routes */}
       <Route
@@ -62,6 +63,14 @@ const RoutesComponent: React.FC = () => {
         element={
           <ProtectedRoute>
             <CategorySelectionPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/business-post"
+        element={
+          <ProtectedRoute>
+            <BusinessPosting />
           </ProtectedRoute>
         }
       />
