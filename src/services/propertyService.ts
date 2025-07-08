@@ -100,4 +100,17 @@ export class PropertyService {
       return null;
     }
   };
+
+  uploadExel = async (file: File): Promise<boolean | null> => {
+    const endpoint = `/Properties/upload-excel`;
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await postData<boolean>(endpoint,formData);
+      return response;
+    } catch (error: unknown) {
+      console.error("Error deleting image:", error);
+      return null;
+    }
+  };
 }

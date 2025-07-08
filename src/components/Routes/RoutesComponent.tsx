@@ -16,6 +16,7 @@ import ValuationForm from "../ValuationForm/ValuationForm";
 import AdPostingForm from "components/PostingProperty/Steps/AdPostingForm";
 import Profile from "../Profile/Profile";
 import BusinessPosting from "../BusinessPosting/BusinessPosting";
+import UploadExcelPage from '../UploadExcelPage';
 
 const RoutesComponent: React.FC = () => {
   return (
@@ -32,6 +33,7 @@ const RoutesComponent: React.FC = () => {
       <Route path="/home-address" element={<HomeAddress />} />
       <Route path="/home-features" element={<HomeFeatures />} />
       <Route path="/valuation" element={<ValuationForm />} />      
+      <Route path="/upload-excel" element={<UploadExcelPage />} />
 
       {/* Protected Routes */}
       <Route

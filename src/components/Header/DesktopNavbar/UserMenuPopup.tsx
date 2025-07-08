@@ -97,6 +97,17 @@ const UserMenuPopup: React.FC<UserMenuPopupProps> = observer(({
                 <FontAwesomeIcon icon={faFileAlt} className="menu-icon" />
                 פרסום עסקים
               </Button>}
+              {userStore.user?.isAdmin &&<Button
+              variant="link"
+              className="menu-item"
+              onClick={() => {
+                setShowUserMenu(false);
+                navigate("/upload-excel");
+              }}
+            >
+              <FontAwesomeIcon icon={faFileAlt} className="menu-icon" />
+              העלאת קובץ
+            </Button>}
             </>
           ) : (
             <>
