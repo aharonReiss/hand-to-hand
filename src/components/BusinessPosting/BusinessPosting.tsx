@@ -402,7 +402,7 @@ const BusinessPosting = () => {
     }
   };
 
-  const cellWidth = Math.floor(A4_WIDTH / (ELEMENTS_PER_ROW + 0.2));
+  const cellWidth = Math.floor((A4_WIDTH - 12) / (ELEMENTS_PER_ROW));
 
   const renderCategoryPages = (category: CategoryData) => {
     const pages = [];
@@ -563,6 +563,32 @@ const BusinessPosting = () => {
                 </div>
               );
             })}
+          </div>
+
+          {/* Footer design at the bottom of the page */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '0',
+              left: '0',
+              marginBottom: '3px',
+              width: '100%',
+              height: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '0 20px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <div style={{ width: '100%', borderBottom: '1px solid #1a3b6d', marginBottom: '5px' }}></div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+              <img src="/images/logo6.png" alt="Logo" style={{ height: '40px' }} />
+              <div style={{ color: '#d4a373' }}>גליון 1</div>
+              <div className="header-label-bg">
+                <span className="header-label">מכירה</span>
+              </div>
+            </div>
           </div>
         </div>
       );
