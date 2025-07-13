@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
       // Clear user data when receiving 401
       userStore.clearUser();
       // Optionally redirect to login page
-      window.location.href = "/login";
+      // window.location.href = "/login";
     }
     return Promise.reject(error);
   }

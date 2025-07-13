@@ -14,26 +14,21 @@ const App: React.FC = observer(() => {
   const location = useLocation();  // מקבלים את המיקום הנוכחי
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // useEffect(() => {
-  //   // ביצוע האימות רק אם אנחנו לא בדף הלוגין
-  //   if (location.pathname !== "/login" &&
-  //      location.pathname !== "/register" &&
-  //      location.pathname !== "/") {
-  //     const authenticateUser = async () => {
-  //       const userService = new UserService();
-  //       const response = await userService.authenticate();
-  //       if (response?.success) {
-  //         userStore.isLoggedIn = true;
-  //         const currentUser = await userService.getCurrentUser();
-  //         if(currentUser?.success){
-  //           userStore.setUser(currentUser.data);
-  //         }
-  //         setIsAuthenticated(true);
-  //       }
-  //     };
-  //     authenticateUser();
-  //   }
-  // }, [location.pathname]);  // שינוי במיקום גורם לטעינה מחדש של האפקט
+  useEffect(() => {
+      const authenticateUser = async () => {
+        const userService = new UserService();
+        const response = await userService.authenticate();
+        if (response?.success) {
+          userStore.isLoggedIn = true;
+          const currentUser = await userService.getCurrentUser();
+          if(currentUser?.success){
+            userStore.setUser(currentUser.data);
+          }
+          setIsAuthenticated(true);
+        }
+      };
+        authenticateUser();
+  }, [location.pathname]);  // שינוי במיקום גורם לטעינה מחדש של האפקט
 
   const handleLogout = () => {
     userStore.isLoggedIn = false; // עדכון הסטור במוביקס על יציאה
